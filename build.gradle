@@ -48,14 +48,6 @@ plugins {
   id "org.sonarqube" version "3.5.0.2730"
 }
 
-sonarqube {
-  properties {
-    property "sonar.projectKey", "cbotdorf_elasticsearch"
-    property "sonar.organization", "cbotdorf"
-    property "sonar.host.url", "https://sonarcloud.io"
-  }
-}
-
 /**
  * This is a convenient method for declaring test artifact dependencies provided by the internal
  * test artifact plugin. It replaces basically the longer dependency notation with explicit capability
@@ -371,4 +363,12 @@ tasks.register("spotlessApply").configure {
   dependsOn gradle.includedBuild('build-tools').task(':spotlessApply')
   dependsOn gradle.includedBuild('build-tools').task(':reaper:spotlessApply')
   dependsOn gradle.includedBuild('build-tools-internal').task(':spotlessApply')
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "cbotdorf_elasticsearch"
+    property "sonar.organization", "cbotdorf"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
